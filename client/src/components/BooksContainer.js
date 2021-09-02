@@ -25,7 +25,8 @@ export default class BooksContainer extends Component {
           return (
             <div className="single-book" key={book.id}>
               <h4>{book.title}</h4>
-              <p>{book.excerpt}</p>
+              <p>{book.author}</p>
+              <p>{book.genre}</p>
             </div>
           );
         })}
