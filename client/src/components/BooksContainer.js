@@ -28,9 +28,9 @@ export default class BooksContainer extends Component {
       .catch((error) => console.log(error));
   }
 
-  addNewBook(title, excerpt) {
+  addNewBook(title, author, genre) {
     axios
-      .post("/api/v1/books", { book: { title, excerpt } })
+      .post("/api/v1/books", { book: { title, author, genre } })
       .then((response) => {
         console.log(response);
         const books = [...this.state.books, response.data];
@@ -57,18 +57,19 @@ export default class BooksContainer extends Component {
     });
   }
 
-  editBook(id, title, excerpt) {
+  editBook(id, title, author, genre) {
     axios
       .put("/api/v1/books/" + id, {
         book: {
           title,
-          excerpt,
+          author,
+          genre,
         },
       })
       .then((response) => {
         console.log(response);
         const books = this.state.books;
-        books[id - 1] = { id, title, excerpt };
+        books[id - 1] = { id, title, author, genre };
         this.setState(() => ({
           books,
           editingBookId: null,

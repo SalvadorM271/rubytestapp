@@ -4,7 +4,7 @@ module Api::V1
 
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.order(:id)
 
     render json: @books
   end
@@ -41,6 +41,7 @@ module Api::V1
       head :no_content, status: :ok
     else
       render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   private
