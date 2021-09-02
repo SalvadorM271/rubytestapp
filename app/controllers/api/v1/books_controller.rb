@@ -19,7 +19,7 @@ module Api::V1
     @book = Book.new(book_params)
 
     if @book.save
-      render json: @book, status: :created, location: @book
+      render json: @book, status: :created
     else
       render json: @book.errors, status: :unprocessable_entity
     end
@@ -37,6 +37,10 @@ module Api::V1
   # DELETE /books/1
   def destroy
     @book.destroy
+    if @book.destroy
+      head :no_content, status: :ok
+    else
+      render json: @book.errors, status: :unprocessable_entity
   end
 
   private
