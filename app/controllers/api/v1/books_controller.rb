@@ -1,4 +1,5 @@
-class BooksController < ApplicationController
+module Api::V1
+  class BooksController < ApplicationController
   before_action :set_book, only: [:show, :update, :destroy]
 
   # GET /books
@@ -48,4 +49,5 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :author, :genre)
     end
+  end
 end
