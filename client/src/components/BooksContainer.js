@@ -80,7 +80,7 @@ export default class BooksContainer extends Component {
 
   render() {
     return (
-      <div className="books-container">
+      <div>
         {this.state.books.map((book) => {
           if (this.state.editingBookId === book.id) {
             return (

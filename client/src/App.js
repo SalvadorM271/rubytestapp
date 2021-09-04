@@ -3,7 +3,7 @@ import BooksContainer from "./components/BooksContainer";
 function App() {
   return (
     <div>
-      <p>How you doin'</p>
+      <div className="header">ShruReads</div>
       <BooksContainer />
     </div>
   );

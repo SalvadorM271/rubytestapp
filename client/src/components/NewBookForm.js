@@ -12,7 +12,7 @@ const NewBookForm = ({ onNewBook = (f) => f }) => {
   };
 
   return (
-    <form onSubmit={submit}>
+    <form className="edit-form" autocomplete="off" onSubmit={submit}>
       <input
         ref={(input) => (_title = input)}
         type="text"

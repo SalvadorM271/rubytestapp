@@ -25,7 +25,11 @@ export default class EditBookForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        className="edit-form"
+        autocomplete="off"
+        onSubmit={this.handleSubmit}
+      >
         <input
           name="title"
           type="text"
