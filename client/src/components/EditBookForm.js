@@ -36,7 +36,7 @@ export default class EditBookForm extends Component {
         <input
           name="author"
           type="text"
-          placeholder="aAuthor"
+          placeholder="Author"
           value={this.state.author}
           onChange={this.handleChange}
         />
