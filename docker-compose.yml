@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+    working_dir: /api
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rails-api
+    command: bash -c "bundle exec rails s -p 3001 -b '0.0.0.0'"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3001:3001"
+    working_dir: /api
+    volumes:
+      - ./:/api
+    depends_on:
+      - db
+  client:
+    build: client
+    image: react-client
+    command: sh -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    working_dir: /client
+    volumes:
+      - ./client:/client
+    environment:
+      POSTGRES_PASSWORD: password
+
+# edited file
+# dockerfile for client and backend
+# setupProxy
+# config/database.yml
+# config/initializers/cors.rb did not edit but may
+# docker-compose
+# docker compose run api rails db:create db:migrate db:seed
